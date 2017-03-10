@@ -1,3 +1,17 @@
+//! Example:
+//!
+//! ```
+//! extern crate pinyin_order;
+//!
+//! use pinyin_order::as_pinyin;
+//!
+//! fn main() {
+//!     let mut l = vec!["中文", "中国", "abc", "重工", "abc中文"];
+//!     l.sort_by_key(|ref s| as_pinyin(s));
+//!     assert_eq!(l, vec!["abc", "abc中文", "中国", "中文", "重工"]);
+//! }
+//! ```
+
 extern crate phf;
 
 use std::cmp::Ordering;
@@ -81,6 +95,7 @@ impl Ord for PinYin {
     }
 }
 
+/// 将字符串转换为拼音用于排序
 pub fn as_pinyin(s: &str) -> Vec<PinYin> {
     s.chars()
         .map(|c| match PINYIN_MAP.get(&c) {
@@ -90,12 +105,3 @@ pub fn as_pinyin(s: &str) -> Vec<PinYin> {
         .collect()
 }
 
-#[test]
-fn it_works() {
-    assert_eq!(as_pinyin("中文"),
-               vec![PinYin::Chinese('中', "zhong"), PinYin::Chinese('文', "wen")]);
-
-    let mut l = vec!["中文", "中国", "abc", "重工", "abc中文"];
-    l.sort_by_key(|ref s| as_pinyin(s));
-    assert_eq!(l, vec!["abc", "abc中文", "中国", "中文", "重工"]);
-}

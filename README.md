@@ -1,8 +1,24 @@
 # pinyin-order
 
 [![Travis Build Status](https://travis-ci.org/iovxw/pinyin-order.svg)](https://travis-ci.org/iovxw/pinyin-order)
+[![Crates](https://img.shields.io/crates/v/pinyin-order.svg)](https://crates.io/crates/pinyin-order)
+[![Documentation](https://docs.rs/pinyin-order/badge.svg)](https://docs.rs/pinyin-order)
 
-Rust 字符串按拼音排序
+Rust 字符串向量按拼音排序
+
+## Example
+
+```rust
+extern crate pinyin_order;
+
+use pinyin_order::as_pinyin;
+
+fn main() {
+    let mut l = vec!["中文", "中国", "abc", "重工", "abc中文"];
+    l.sort_by_key(|ref s| as_pinyin(s));
+    assert_eq!(l, vec!["abc", "abc中文", "中国", "中文", "重工"]);
+}
+```
 
 ## License
 
