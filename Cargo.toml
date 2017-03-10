@@ -1,0 +1,12 @@
+[package]
+name = "pinyin-order"
+version = "0.1.0"
+authors = ["iovxw <iovxw@outlook.com>"]
+build = "build.rs"
+
+[dependencies]
+phf = "0.7"
+
+[build-dependencies]
+phf_codegen = "0.7"
+regex = "0.2"
