@@ -1,3 +1,7 @@
+//! **Deprecated: The [pinyin](https://crates.io/crates/pinyin) crate [has been rewritten](https://github.com/mozillazg/rust-pinyin/pull/36), use it instead.**
+//!
+//! ------------------
+//!
 //! Example:
 //!
 //! ```
